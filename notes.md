@@ -170,9 +170,7 @@ dan een hele grote functie met veel if-statements.
 
 "open-heart surgery on the browser"
 
-undefined = 'hoi';
-
-
+```ts
 let originalTimeout = window.setTimeout;
 window.setTimeout = (callback, ms) => {
 
@@ -181,6 +179,15 @@ window.setTimeout = (callback, ms) => {
 		runChangeDetection();
 	}, ms);
 };
+```
+
+```ts
+// native dingen overschrijven was vroeger nooit heel tof
+undefined = 'hoi';
+```
+
+Maar nog nooit problemen gehad met de wrapper van Zone.js
+
 
 Een pagina kan met Zone.js worden opgedeeld in meerdere zones die onafhankelijk diagnostische informatie
 bijhouden over timeouts en dergelijke. Angular kiest voor 1 almachtige zone: `NgZone`
