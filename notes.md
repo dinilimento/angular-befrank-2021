@@ -50,3 +50,48 @@ nog verder gaan met formulieren:
 - custom form controls (zo advanced als je kan gaan)
 
   checkbox  =>  [on     ]
+
+## Node en npm
+
+```sh
+npm start => package.json => ng serve   # van je lokale node_modules
+
+npx ng serve # ook lokale node_modules
+
+nvm # voor meerdere node.js-versies
+```
+
+
+## Data access layer
+
+Steeds relevanter stukje abstractie nu data ophalen steeds vaker op verschillende manieren
+
+- AJAX
+- gRPC
+- WebSockets
+- Server-sent events
+- WebRTC    gebruiker <===> gebruiker
+- heeeuuuull nieuw. WebTransport
+
+### Lijst verversen
+
+Hoe komt mijn toegevoegde item in mijn lijst?
+
+1. Je lokale entity .next()en
+=> je mist een id / niet meer in sync met server
+=> als je POST stukgaat, dan heb je iets in je UI
+=> supersnel
+=> Optimistic UI
+
+2. De bijgewerkte entity .next()en
+=> duurt iets langer
+=> je bent meer in sync met de server: je hebt je id
+=> errorhandling komt meestal goedkoop
+
+3. De volledige lijst opnieuw ophalen
+=> duurt veruit het langst
+=> je bent volledig in sync
+=> errorhandling komt meestal goedkoop
+=> gemak van implementatie
+=> meest belastend voor je servers
+
