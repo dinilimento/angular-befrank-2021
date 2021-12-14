@@ -71,14 +71,14 @@
           formControlName="name"
           placeholder="Je naam graag"
         />
-        <span *ngIf="c['name'].touched && c['name'].invalid">*</span>
-        <span *ngIf="c['name'].touched && c['name'].errors?.['required']"
+        <span *ngIf="c.name.touched && c.name.invalid">*</span>
+        <span *ngIf="c.name.touched && c.name.errors?.['required']"
           >Vul in aub</span
         >
-        <span *ngIf="c['name'].touched && c['name'].errors?.['pattern']"
+        <span *ngIf="c.name.touched && c.name.errors?.['pattern']"
           >Alleen letters, cijfers, spaties en streepjes graag</span
         >
-        <!-- <pre>{{form.controls['name'].errors | json}}</pre> -->
+        <!-- <pre>{{form.controls.name.errors | json}}</pre> -->
       </li>
       <li>
         <label for="input-birth-date">Geboortedatum:</label>

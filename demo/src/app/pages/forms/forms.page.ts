@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TForm } from 'src/app/typed-forms';
 
 @Component({
   selector: 'app-forms',
@@ -8,32 +9,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormsPage implements OnInit {
 
-  form = new FormGroup({
+  form: TForm<Person> = new FormGroup({
     name: new FormControl(undefined, [Validators.required, Validators.pattern('^[a-zA-Z -]+$')]),
     birthDate: new FormControl(undefined, Validators.required),
     photoUrl: new FormControl(undefined, Validators.required)
-  });
+  }) as TForm<Person>;
 
-  newPerson = {} as any;
+  newPerson = {} as Person;
 
   get c() {
     return this.form.controls;
   }
 
-
-  constructor() { }
-
   ngOnInit(): void {
-
     setTimeout(() => {
       this.form.setValue({
         name: 'JP',
         birthDate: '2004-07-14',
         photoUrl: 'bla.jpg'
       });
-
-    }, 2000)
-
+    }, 2000);
   }
 
   addPersonReactive() {
