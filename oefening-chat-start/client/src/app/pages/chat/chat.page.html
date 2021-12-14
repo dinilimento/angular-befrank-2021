@@ -1,0 +1,40 @@
+<h2>Volledige chat
+	<span *ngIf="connected">(welkom {{username}}!)</span>
+</h2>
+
+<form [formGroup]="connectForm" (submit)="connect()" *ngIf="!connected" autocomplete="off">
+	<input formControlName="name" id="input-name" placeholder="Je naam" [focusOn]="true">
+	<button>Chatten!</button>
+</form>
+
+<form [formGroup]="messageForm" (submit)="say()" *ngIf="connected" autocomplete="off">
+	<input formControlName="message" 
+			id="input-content" 
+			placeholder="Je bericht"
+			[focusOn]="!messageForm.value.content">
+	<button>Zeg!</button>
+</form>
+
+<div id="container" *ngIf="connected">
+	<main>
+		<ol id="announcements" *ngIf="announcements.length > 0">
+			<li *ngFor="let announcement of announcements">{{announcement.content}}</li>
+		</ol>
+
+		<div *ngIf="messages.length == 0">Wees de eerste die iets interessants zegt!</div>
+
+		<ol id="messages">
+			<li *ngFor="let message of messages">
+				<span class="time">{{message.timestamp | date: 'HH:mm:ss'}}</span>
+				<span class="name">{{message.sender}}</span>
+				{{message.content}}
+			</li>
+		</ol>
+	</main>
+	<aside>
+		<h2>Aanwezige mensen</h2>
+		<ul>
+			<li *ngFor="let user of users">{{user.name}}</li>
+		</ul>
+	</aside>
+</div>

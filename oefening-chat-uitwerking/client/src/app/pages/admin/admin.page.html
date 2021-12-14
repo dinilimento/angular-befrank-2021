@@ -1,0 +1,11 @@
+<h2>Admin</h2>
+
+<form [formGroup]="form" (submit)="announce()">
+	<fieldset>
+		<legend>Nieuwe aankondiging</legend>
+
+		<label>Bericht:</label>
+		<input formControlName="message">
+		<button>Kondig aan</button>
+	</fieldset>
+</form>

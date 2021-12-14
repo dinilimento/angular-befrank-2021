@@ -1,0 +1,16 @@
+<h2>Prachtige webapp</h2>
+<p>Welkom op deze almachtige chatapplicatie.</p>
+
+<ul>
+	<li>In <code>chat.service.ts</code>, gebruik <code>fromEvent()</code> om de WebSocket-events af te vangen</li>
+	<li>
+		In <code>chat.page.ts</code>, implementeer de <code>initializeChat()</code>-functie door:
+		<ul>
+			<li>te subscriben op de <code>connection</code> Observables en gepushte waarden te verwerken</li>
+			<li><code>connected</code> en <code>username</code> in te stellen</li>
+		</ul>
+	</li>
+	<li>In <code>minichat.component.ts</code> ook te subscriben op de <code>connection</code>. In de minichat hoeven enkel
+		berichten getoond te worden, geen aankondigingen of andere zaken.</li>
+	<li>Tijd over en zin in een uitdaging? Unittest de <code>initializeChat()</code>-functie</li>
+</ul>

@@ -1,0 +1,30 @@
+header {
+	display: flex;
+	justify-content: space-between;
+	background: lightgray;
+	margin-bottom: 2rem;
+	padding: 1.5rem;
+}
+
+nav ol {
+	display: flex;
+	justify-content: flex-end;
+
+	a {
+		background: lightblue;
+		padding: 7px;
+		display: block;
+		margin: 5px;
+		text-decoration: none;
+		color: black;
+		border-bottom: 2px solid transparent;
+		transition: 0.3s ease all;
+
+		&:hover {
+			border-bottom: 2px solid purple;
+		}
+	}
+	.active {
+		background: lightgreen;
+	}
+}
