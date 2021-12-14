@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TForm } from 'src/app/typed-forms';
+import { Person } from '../../models/person';
 
 @Component({
   selector: 'app-forms',
@@ -8,7 +9,6 @@ import { TForm } from 'src/app/typed-forms';
   styleUrls: ['./forms.page.css']
 })
 export class FormsPage implements OnInit {
-
   form: TForm<Person> = new FormGroup({
     name: new FormControl(undefined, [Validators.required, Validators.pattern('^[a-zA-Z -]+$')]),
     birthDate: new FormControl(undefined, Validators.required),

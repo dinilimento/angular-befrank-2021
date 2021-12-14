@@ -1,4 +1,4 @@
-type Person = {
+export type Person = {
     name: string;
 
     birthDate: string;
