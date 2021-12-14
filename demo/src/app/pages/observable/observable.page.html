@@ -1,0 +1,42 @@
+<h2>Observables</h2>
+
+<form [formGroup]="form" (submit)="addPersonReactive()">
+  <ol>
+    <li>
+      <label for="input-name">Naam:</label>
+      <input
+        id="input-name"
+        formControlName="name"
+        placeholder="Je naam graag"
+      />
+    </li>
+    <li>
+      <label for="input-birth-date">Geboortedatum:</label>
+      <input type="date" id="input-birth-date" formControlName="birthDate" />
+    </li>
+    <li>
+      <label for="input-photo-url">Foto:</label>
+      <input type="url" id="input-photo-url" formControlName="photoUrl" />
+    </li>
+    <li>
+      <button [disabled]="!form.valid">Voeg persoon toe</button>
+    </li>
+  </ol>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Geboortedatum</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let person of persons">
+            <td>{{person.id}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.birthDate}}</td>
+        </tr>
+    </tbody>
+</table>
