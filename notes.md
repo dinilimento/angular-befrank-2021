@@ -95,3 +95,92 @@ Hoe komt mijn toegevoegde item in mijn lijst?
 => gemak van implementatie
 => meest belastend voor je servers
 
+
+
+## Change detection
+
+dirty checking van databindingexpressies: oldVal === newVal
+*ngFor deep compare
+
+```html
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+{{name}}
+
+
+{{doeIets()}}
+// functie-aanroep tijdens databinden is een geel vlaggetje. Het is niet verboden, er zijn goede use cases voor, maar 
+// wees bewust van wat je daar doet.
+```
+
+```html
+<button (click)="changeName()">Verander naam</button>
+```
+```ts
+changeName() {
+	this.name = 'iets anders';
+}
+```
+
+```html
+<crud-table>
+
+	<td>
+		{{column.textValue}}
+
+		<input [(ngModel)]="column.value">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'bool'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'password'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'radio'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'lookup'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'bool'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'bool'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'bool'">
+		<input [(ngModel)]="column.value" type="checkbox" *ngIf="column.type == 'bool'">
+
+	</td>
+
+</crud-table>
+```
+
+17 per cel x 5 kolommen x 20 rijen = 1700 databindingexpressies
+
+AngularJS - max. 2000 databindingexpressies
+Angular 2+ - honderdenduizenden
+
+"branch prediction"
+
+@ runtime worden er "change detectors" gegenereerd die specialisten zijn in het bijhouden
+van of er iets gewijzigd is bij een component. Deze kunnen een stuk beter worden gebranchpredict
+dan een hele grote functie met veel if-statements.
+
+### Zone.js
+
+"open-heart surgery on the browser"
+
+undefined = 'hoi';
+
+
+let originalTimeout = window.setTimeout;
+window.setTimeout = (callback, ms) => {
+
+	originalTimeout(() => {
+		callback();
+		runChangeDetection();
+	}, ms);
+};
+
+Een pagina kan met Zone.js worden opgedeeld in meerdere zones die onafhankelijk diagnostische informatie
+bijhouden over timeouts en dergelijke. Angular kiest voor 1 almachtige zone: `NgZone`
