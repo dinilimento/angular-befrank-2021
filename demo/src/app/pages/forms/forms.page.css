@@ -1,0 +1,6 @@
+input.ng-touched.ng-invalid {
+    background: lightpink;
+}
+input.ng-touched.ng-valid {
+    background: lightgreen;
+}

@@ -1,0 +1,101 @@
+<div #iets>
+  hoi
+  <span>bla</span>
+</div>
+{{iets.innerHTML}}
+
+<div style="display: flex">
+  <form (submit)="addPersonTemplate()" #templateForm="ngForm">
+    <h2>Template-driven</h2>
+
+    <ol>
+      <li>
+        <label for="input-name">Naam:</label>
+        <input
+          id="input-name"
+          [(ngModel)]="newPerson.name"
+          name="name"
+          required
+          pattern="^[a-zA-Z -]+$"
+          #inputName="ngModel"
+        />
+        <span *ngIf="inputName.touched && inputName.invalid">*</span>
+        <span *ngIf="inputName.touched && inputName.errors?.['required']"
+          >Vul in aub</span
+        >
+        <span *ngIf="inputName.touched && inputName.errors?.['pattern']"
+          >Alleen letters, cijfers, spaties en streepjes graag</span
+        >
+      </li>
+      <li>
+        <label for="input-birth-date">Geboortedatum:</label>
+        <input
+          type="date"
+          id="input-birth-date"
+          [(ngModel)]="newPerson.birthDate"
+          name="birthDate"
+          required
+          #inputBirthDate="ngModel"
+        />
+      </li>
+      <li>
+        <label for="input-photo-url">Foto:</label>
+        <input
+          type="url"
+          id="input-photo-url"
+          [(ngModel)]="newPerson.photoUrl"
+          name="photoUrl"
+          required
+          #inputPhotoUrl="ngModel"
+        />
+      </li>
+      <li>
+        <button [disabled]="!templateForm.valid">Voeg persoon toe</button>
+      </li>
+      <li>
+        valid: {{templateForm.valid}}
+
+        <pre>{{newPerson | json}}</pre>
+      </li>
+    </ol>
+  </form>
+
+  <form [formGroup]="form" (submit)="addPersonReactive()">
+    <h2>Model-driven</h2>
+
+    <ol>
+      <li>
+        <label for="input-name">Naam:</label>
+        <input
+          id="input-name"
+          formControlName="name"
+          placeholder="Je naam graag"
+        />
+        <span *ngIf="c['name'].touched && c['name'].invalid">*</span>
+        <span *ngIf="c['name'].touched && c['name'].errors?.['required']"
+          >Vul in aub</span
+        >
+        <span *ngIf="c['name'].touched && c['name'].errors?.['pattern']"
+          >Alleen letters, cijfers, spaties en streepjes graag</span
+        >
+        <!-- <pre>{{form.controls['name'].errors | json}}</pre> -->
+      </li>
+      <li>
+        <label for="input-birth-date">Geboortedatum:</label>
+        <input type="date" id="input-birth-date" formControlName="birthDate" />
+      </li>
+      <li>
+        <label for="input-photo-url">Foto:</label>
+        <input type="url" id="input-photo-url" formControlName="photoUrl" />
+      </li>
+      <li>
+        <button [disabled]="!form.valid">Voeg persoon toe</button>
+      </li>
+      <li>
+        valid: {{form.valid}}
+
+        <pre>{{form.value | json}}</pre>
+      </li>
+    </ol>
+  </form>
+</div>
