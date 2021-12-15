@@ -1,0 +1,10 @@
+<div class="container">
+	<h1>Minichat</h1>
+	
+	<ol id="messages">
+		<li *ngFor="let message of messages">
+			<span class="name">{{message.sender}}</span>
+			{{message.content}}
+		</li>
+	</ol>
+</div>

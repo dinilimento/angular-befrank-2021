@@ -1,0 +1,15 @@
+<header>
+	<h1>Oefening Observables</h1>
+
+	<nav>
+		<ol>
+			<li><a routerLink="/start" routerLinkActive="active">Start</a></li>
+			<li><a routerLink="/chat" routerLinkActive="active">Chat</a></li>
+			<li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+		</ol>
+	</nav>
+</header>
+
+<router-outlet></router-outlet>
+
+<minichat *ngIf="currentUrl != '/chat'"></minichat>
