@@ -229,6 +229,18 @@ istanbul - code coverage
 
 ng test --code-coverage
 
+```ts
+// builder
+Customer.newCustomer()
+        .withName('JP')
+        .withAge(35)
+        .build();
+
+// object mother
+
+// partials
+```
+
 ### Mocking
 
 ```ts
@@ -244,4 +256,24 @@ let iets: A = new B();
 ```
 
 Als je mock classes genoeg overeen komen met de echte class, dan kun je deze relatief eenvouding patchen.
+
+## Lazy loading
+
+Progressive Web App
+
+HTTP/2
+- multiplexing
+
+
+Polymer?
+
+
+
+Push-functionaliteit
+
+Push critical resources
+Render initial route
+Pre-cache most visited routes
+Lazy load the rest
+
 
