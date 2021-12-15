@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsPage } from './pages/forms/forms.page';
-import { ObservablePage } from './pages/observable/observable.page';
 import { ChangeDetectPage } from './pages/change-detect/change-detect.page';
 import { MijnPurePipe } from './pipes/mijn-pure.pipe';
 import { MijnImpurePipe } from './pipes/mijn-impure.pipe';
@@ -17,7 +16,6 @@ import { TestPage } from './pages/test/test.page';
   declarations: [
     AppComponent,
     FormsPage,
-    ObservablePage,
     ChangeDetectPage,
     MijnPurePipe,
     MijnImpurePipe,

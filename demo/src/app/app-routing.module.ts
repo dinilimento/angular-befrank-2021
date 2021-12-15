@@ -7,7 +7,7 @@ import { TestPage } from './pages/test/test.page';
 
 const routes: Routes = [
   { path: 'forms', component: FormsPage },
-  { path: 'observables', component: ObservablePage },
+  { path: 'observables', loadChildren: () => import('./pages/observable/observable.page.module').then(x => x.ObservablePageModule) },
   { path: 'change-detection', component: ChangeDetectPage },
   { path: 'test', component: TestPage },
   { path: '', pathMatch: 'full', redirectTo: '/forms' }
