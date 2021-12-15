@@ -2,6 +2,9 @@
 
 naam: {{name}}
 
+
+<button (click)="addCar();">Add car</button>
+
 <div style="display: flex">
   <ul>
     <li *ngFor="let car of cars">{{car.make}} {{car.model}}</li>
@@ -15,7 +18,7 @@ naam: {{name}}
 <button (click)="config.name = config.name + 'test'">Vul naam aan</button>
 
 
-<div style="width: 400px; height: 300px; border: 3px solid purple; border-radius: 30px; background: pink;"
+<div style="width: 100px; height: 100px; border: 3px solid purple; border-radius: 30px; background: pink;"
      (mousemove)="move()">hover hier</div>
 
 

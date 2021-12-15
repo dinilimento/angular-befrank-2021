@@ -9,7 +9,7 @@ export class ChangeDetectPage implements OnInit {
   name = 'JP';
 
   config = {
-    name: 'config JP'
+    name: 'config JP',
   };
 
   cars = [
@@ -22,6 +22,13 @@ export class ChangeDetectPage implements OnInit {
     setTimeout(() => {
       this.name += 'iets anders';
     }, 2000);
+  }
+
+  addCar() {
+    this.cars.push({
+      make: 'Renault',
+      model: 'Megane',
+    });
   }
 
   move() {
