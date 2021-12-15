@@ -8,9 +8,9 @@ import { AppComponent } from './app.component';
 import { FormsPage } from './pages/forms/forms.page';
 import { ObservablePage } from './pages/observable/observable.page';
 import { ChangeDetectPage } from './pages/change-detect/change-detect.page';
-import { CarViewerComponent } from './components/car-viewer/car-viewer.component';
 import { MijnPurePipe } from './pipes/mijn-pure.pipe';
 import { MijnImpurePipe } from './pipes/mijn-impure.pipe';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,6 @@ import { MijnImpurePipe } from './pipes/mijn-impure.pipe';
     FormsPage,
     ObservablePage,
     ChangeDetectPage,
-    CarViewerComponent,
     MijnPurePipe,
     MijnImpurePipe
   ],
@@ -27,7 +26,8 @@ import { MijnImpurePipe } from './pipes/mijn-impure.pipe';
     FormsModule, // template-driven
     ReactiveFormsModule, // model-driven
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ],
   providers: [
     // { provide: ErrorHandler, useClass: MijnErrorHandler }
