@@ -1,13 +1,9 @@
-import { MagicServiceMock } from "src/app/mocks/magic.service.spec";
 import { MagicService } from "src/app/services/magic.service";
 import { TestPage } from "./test.page";
 import { TestBed } from "@angular/core/testing";
 import { of } from "rxjs";
 import { getDefaultMockProviders } from "src/app/mocks/provider-helpers.spec";
-import { ngMocks, MockProvider, MockComponent } from 'ng-mocks';
-import { CarViewerComponent } from "src/app/components/car-viewer/car-viewer.component";
-
-ngMocks.autoSpy('jasmine');
+import { getDefaultComponents } from "src/app/mocks/component-helpers.spec";
 
 describe('Page: Test', () => {
     let sut: TestPage; // system under test
@@ -15,9 +11,9 @@ describe('Page: Test', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestPage, MockComponent(CarViewerComponent)],
+            declarations: [TestPage, ...getDefaultComponents()],
             imports: [],
-            providers: [MockProvider(MagicService)]
+            providers: getDefaultMockProviders()
         });
         magicServiceMock = TestBed.inject(MagicService) as jasmine.SpyObj<MagicService>;
         magicServiceMock.getMagicNumber.and.returnValue(of(484));

@@ -8,6 +8,3 @@ export function getDefaultMockProviders() {
     ];
 }
 
-export function getDefaultComponents() {
-    
-}

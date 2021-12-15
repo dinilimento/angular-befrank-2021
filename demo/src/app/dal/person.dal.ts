@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Person } from '../models/person';
 
 @Injectable({ providedIn: 'root' }) // Angular 6-8 // singleton
@@ -10,7 +10,7 @@ export class PersonDal {
   private havePersonsBeenRetrieved = false;
   constructor(private http: HttpClient) {}
 
-  getAll() {
+  getAll(): Observable<Person[]> {
     if (!this.havePersonsBeenRetrieved) {
       this.http
         .get<Person[]>('http://localhost:3000/persons')
