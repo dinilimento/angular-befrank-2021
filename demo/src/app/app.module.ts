@@ -11,6 +11,7 @@ import { ChangeDetectPage } from './pages/change-detect/change-detect.page';
 import { MijnPurePipe } from './pipes/mijn-pure.pipe';
 import { MijnImpurePipe } from './pipes/mijn-impure.pipe';
 import { ComponentsModule } from './components/components.module';
+import { TestPage } from './pages/test/test.page';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ComponentsModule } from './components/components.module';
     ObservablePage,
     ChangeDetectPage,
     MijnPurePipe,
-    MijnImpurePipe
+    MijnImpurePipe,
+    TestPage
   ],
   imports: [
     BrowserModule,

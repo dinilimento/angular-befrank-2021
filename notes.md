@@ -166,6 +166,12 @@ Angular 2+ - honderdenduizenden
 van of er iets gewijzigd is bij een component. Deze kunnen een stuk beter worden gebranchpredict
 dan een hele grote functie met veel if-statements.
 
+
+
+OnChanges staat redelijk los van het "echte" change detection: checkt simpelweg @Input()  oldVal === newVal
+DoCheck
+
+
 ### Zone.js
 
 "open-heart surgery on the browser"
@@ -191,3 +197,51 @@ Maar nog nooit problemen gehad met de wrapper van Zone.js
 
 Een pagina kan met Zone.js worden opgedeeld in meerdere zones die onafhankelijk diagnostische informatie
 bijhouden over timeouts en dergelijke. Angular kiest voor 1 almachtige zone: `NgZone`
+
+## Modules
+
+Angular modules???
+
+- Groeperen van functionaliteit
+- Delen over projecten
+  => npm publish
+- Encapsulatie
+- Optimalisatie
+
+
+- Lazy loading
+- Makkelijker unittesten
+
+
+
+Modules sharen:
+
+- npm private registry - enterprise registry
+- npm link
+- npm install-local   https://www.npmjs.com/package/install-local
+- ng generate library shared
+
+## Unittesten
+
+karma - test runner
+jasmine - test framework (assertions)  it() describe() mocks
+istanbul - code coverage
+
+ng test --code-coverage
+
+### Mocking
+
+```ts
+// duck typing
+
+class A {
+	doeIets() { }
+}
+class B {
+	doeIets() { }
+}
+let iets: A = new B();
+```
+
+Als je mock classes genoeg overeen komen met de echte class, dan kun je deze relatief eenvouding patchen.
+
